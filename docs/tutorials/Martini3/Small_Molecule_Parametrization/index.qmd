@@ -257,6 +257,12 @@ The first interactions directive of the file can then look something like this:
 ```
 Note as well that the initial guesses here are completely arbitrary. Any interaction will be analysed *ab initio* with new parameters calculated.
 
+To run `ff_inter` we also need a reference `.tpr` file for the molecule on its own:
+
+``` bash
+gmx grompp -f initial.mdp -p topol.top -c ../2_mapping/mapped.gro -o mapped.tpr -maxwarn 1
+```
+
 The `ff_inter` program can then be invoked with the following command:
 
 ``` bash
@@ -278,7 +284,7 @@ We can now finalize the first take on the CG model, `ENAP_take1.itp`, where we c
 cd ../4_CG_sim
 ```
 ``` bash
-cp ../3_initial_CG/ENAP.itp.
+cp ../3_initial_CG/ENAP.itp .
 ```
 ``` bash
 bash run_CG.sh
